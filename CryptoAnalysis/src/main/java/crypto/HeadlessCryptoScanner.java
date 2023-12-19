@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import crypto.reporting.GitHubAnnotationReporter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -215,6 +216,10 @@ public abstract class HeadlessCryptoScanner {
 								break;
 							case CSV_SUMMARY:
 								fileReporter = new CSVSummaryReporter(getOutputFolder(), softwareIdentifier(), rules, callgraphConstructionTime, includeStatistics());
+								reporter.addReportListener(fileReporter);
+								break;
+							case GITHUB_ANNOTATION:
+								fileReporter = new GitHubAnnotationReporter(softwareIdentifier(), rules, callgraphConstructionTime, includeStatistics());
 								reporter.addReportListener(fileReporter);
 								break;
 							default:

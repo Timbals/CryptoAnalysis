@@ -213,7 +213,7 @@ public class CryptoScannerSettings {
 	}
 	
 	public enum ReportFormat {
-		CMD, TXT, SARIF, CSV, CSV_SUMMARY
+		CMD, TXT, SARIF, CSV, CSV_SUMMARY, GITHUB_ANNOTATION
 	}
 	
 	public enum RulesetPathType {
@@ -279,6 +279,9 @@ public class CryptoScannerSettings {
 					break;
 				case "csv_summary":
 					reportFormats.add(ReportFormat.CSV_SUMMARY);
+					break;
+				case "github_annotation":
+					reportFormats.add(ReportFormat.GITHUB_ANNOTATION);
 					break;
 				default:
 					throw new CryptoAnalysisParserException("Incorrect value " + reportFormatValue + " for --reportFormat option. "
